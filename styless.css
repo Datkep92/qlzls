@@ -708,3 +708,101 @@ input:focus {
         justify-content: center;
     }
 }
+.header {
+    background: linear-gradient(135deg, #ff007a, #ff6b9d);
+    color: white;
+    padding: 10px 10px; /* Giảm padding từ 20px xuống 15px */
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    font-size: 15px; /* Giảm từ 20px xuống 18px */
+    margin-bottom: 1px; /* Giảm từ 10px xuống 2px */
+}
+
+.subtitle {
+    font-size: 12px;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+/* Đồng thời giảm chiều cao tabs */
+.tabs {
+    display: flex;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 40px; /* Giảm từ 80px xuống 60px */
+    z-index: 99;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 10px; /* Giảm từ 15px xuống 12px */
+    text-align: center;
+    border: none;
+    background: white;
+    font-size: 10px; /* Giảm từ 14px xuống 13px */
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.mobile-form-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px; /* Giảm từ 10px xuống 6px */
+    padding: 6px 0; /* Giảm từ 8px xuống 6px */
+    border-bottom: 1px solid #e9ecef;
+}
+
+.quick-section-compact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px; /* Giảm từ 12px xuống 8px */
+    padding: 6px 0; /* Giảm từ 8px xuống 6px */
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Giảm khoảng cách giữa các phần */
+.mobile-form {
+    background: #f8f9fa;
+    padding: 10px; /* Giảm từ 12px xuống 10px */
+    border-radius: 10px;
+    margin-bottom: 12px; /* Giảm từ 15px xuống 12px */
+}
+
+.quick-setup {
+    background: #f8f9fa;
+    padding: 10px; /* Giảm từ 15px xuống 10px */
+    border-radius: 10px;
+    margin: 12px 0; /* Giảm từ 15px xuống 12px */
+}
+
+.selected-values {
+    background: #e8f5e8;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 12px; /* Giảm từ 15px xuống 12px */
+    margin: 12px 0; /* Giảm từ 15px xuống 12px */
+}
+
+.value-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px; /* Giảm từ 8px xuống 6px */
+    font-size: 13px;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px; /* Giảm từ 10px xuống 8px */
+    margin: 15px 0; /* Giảm từ 20px xuống 15px */
+}
