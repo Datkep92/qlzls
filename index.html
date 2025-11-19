@@ -17,42 +17,42 @@
             <button class="tab" onclick="switchTab('add')">➕ Thêm SP</button>
             <button class="tab" onclick="switchTab('manage')">📦 Quản lý</button>
         </div>
+<!-- Tab Cài đặt -->
+<div id="setupTab" class="tab-content active">
+    <div class="form-group">
+        <label>🌐 API URL:</label>
+        <input type="url" id="apiUrl" placeholder="https://gist.githubusercontent.com/...">
+    </div>
+    <div class="form-group">
+        <label>🔑 GitHub Token:</label>
+        <input type="password" id="githubToken" placeholder="ghp_...">
+    </div>
+    <div class="form-group">
+        <label>📁 Tên file:</label>
+        <input type="text" id="fileName" value="zalocash">
+    </div>
+    
+    <div class="action-buttons">
+        <button class="btn btn-success" onclick="saveSettings()">💾 Lưu cài đặt</button>
+        <button class="btn btn-primary" onclick="testConnection()">🔍 Kiểm tra Gist</button>
+        <button class="btn btn-warning" onclick="syncFromGist()">📥 Đồng bộ từ Gist</button>
+    </div>
 
-        <!-- Tab Cài đặt -->
-        <div id="setupTab" class="tab-content active">
-            <div class="form-group">
-                <label>🌐 API URL:</label>
-                <input type="url" id="apiUrl" placeholder="https://gist.githubusercontent.com/...">
-            </div>
-            <div class="form-group">
-                <label>🔑 GitHub Token:</label>
-                <input type="password" id="githubToken" placeholder="ghp_...">
-            </div>
-            <div class="form-group">
-                <label>📁 Tên file:</label>
-                <input type="text" id="fileName" value="zalocash">
-            </div>
-            
-            <div class="action-buttons">
-                <button class="btn btn-success" onclick="saveSettings()">💾 Lưu cài đặt</button>
-                <button class="btn btn-primary" onclick="testConnection()">🔄 Kiểm tra</button>
-            </div>
-
-            <div class="api-status">
-                <div class="status-item">
-                    <span>🔄 Cập nhật:</span>
-                    <span id="lastUpdate">--</span>
-                </div>
-                <div class="status-item">
-                    <span>📦 Sản phẩm:</span>
-                    <span id="totalProducts">0</span>
-                </div>
-                <div class="status-item">
-                    <span>🌐 Gist:</span>
-                    <span id="gistStatus">❌ Chưa kết nối</span>
-                </div>
-            </div>
+    <div class="api-status">
+        <div class="status-item">
+            <span>🔄 Cập nhật:</span>
+            <span id="lastUpdate">--</span>
         </div>
+        <div class="status-item">
+            <span>📦 Sản phẩm:</span>
+            <span id="totalProducts">0</span>
+        </div>
+        <div class="status-item">
+            <span>🌐 Gist:</span>
+            <span id="gistStatus">❌ Chưa kết nối</span>
+        </div>
+    </div>
+</div>
 
 <!-- Tab Thêm sản phẩm -->
 <div id="addTab" class="tab-content">
@@ -161,14 +161,57 @@
     </div>
 </div>
 
-        <!-- Tab Quản lý -->
 <!-- Tab Quản lý -->
 <div id="manageTab" class="tab-content">
-    <div class="section-title">
-        📦 Danh sách sản phẩm (<span id="productCount">0</span>)
+    <div class="section-header">
+        <div class="section-title">
+            📦 Danh sách sản phẩm (<span id="productCount">0</span>)
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary btn-sm" onclick="recheckAllLinks()">
+                🔄 Kiểm tra link
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="toggleViewMode()" id="viewModeToggle">
+                📐 Chế độ xem
+            </button>
+        </div>
     </div>
-    <div id="productList" class="mobile-product-list">
-        <!-- Products will be loaded here -->
+    
+    <div class="product-controls">
+        <div class="search-box">
+            <input type="text" id="productSearch" placeholder="🔍 Tìm sản phẩm..." 
+                   onkeyup="filterProducts()">
+        </div>
+        <div class="sort-options">
+            <select id="sortProducts" onchange="sortProducts()">
+                <option value="name">Sắp xếp: Tên A-Z</option>
+                <option value="name-desc">Sắp xếp: Tên Z-A</option>
+                <option value="amount">Sắp xếp: Số tiền</option>
+                <option value="date">Sắp xếp: Mới nhất</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Grid View -->
+    <div id="gridView" class="product-grid-view">
+        <div class="grid" id="productGrid">
+            <!-- Products will be loaded here in grid format -->
+        </div>
+    </div>
+    
+    <!-- List View -->
+    <div id="listView" class="product-list-view" style="display: none;">
+        <div id="productList" class="mobile-product-list">
+            <!-- Products will be loaded here in list format -->
+        </div>
+    </div>
+    
+    <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">📦</div>
+        <div class="empty-text">Chưa có sản phẩm nào</div>
+        <button class="btn btn-primary" onclick="switchTab('add')">
+            ➕ Thêm sản phẩm đầu tiên
+        </button>
     </div>
 </div>
     </div>
